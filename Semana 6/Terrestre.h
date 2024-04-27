@@ -12,17 +12,16 @@ using namespace System;
 class Terrestre
 {
 protected:
-	int x, y, dx, dy, w, h;
+	int x, y, dx, dy, w, h, tipo;
 public:
 	Terrestre() {
-
 	}
 	~Terrestre() {}
-	void mover() {
+	void mover(int ndx, int ndy) {
 		if (x + dx < 0 || x + dx + w > wWindows)
-			dx = -dx;
+			dx = ndx;
 		if (y + dy < 0 || y + dy + h > hWindows)
-			dy = -dy;
+			dy = ndy;
 		x += dx;
 		y += dy;
 	}
@@ -33,8 +32,22 @@ public:
 				cout << " ";
 		}
 	}
-	void dibujar(){}
+	virtual void dibujar(){}
 	bool colision(int ex, int ey, int ew, int eh) {
 		return x <= ex + ew && ex <= x + w && y <= ey + eh && ey <= y + h;
 	}
+	virtual void validarMovimiento() {
+		mover(0, 0);
+	}
+
+	virtual void generarMovimiento() {
+		validarMovimiento();
+	}
+
+	int getX() { return x;  }
+	int getY() { return y;  }
+	int getW() { return w;  }
+	int getH() { return h;  }
+	int getTipo() { return tipo; }
+	int getDX() { return dx; }
 };

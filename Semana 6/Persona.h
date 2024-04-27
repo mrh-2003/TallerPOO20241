@@ -8,8 +8,10 @@
 
 class Persona : public Terrestre {
 private:
+	int vidas;
 public:
 	Persona() {
+		vidas = 3;
 		w = 1;
 		h = 1;
 		dy = dx = 0;
@@ -29,5 +31,11 @@ public:
 		case arriba: dy = -1; break;
 		case abajo: dy = 1; break;
 		}
+	}
+	void setVidas() {
+		vidas--;
+	}
+	int getVidas() {
+		return vidas;
 	}
 };

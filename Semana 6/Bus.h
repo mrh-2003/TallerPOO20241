@@ -8,7 +8,10 @@ public:
 		w = 18;
 		h = 3;
 		dy = dx = 0;
-
+		x = wWindows - w;
+		dx = -4;
+		tipo = 2;
+		y = rand() % (hWindows - h);
 	}
 	void dibujar() {
 		Console::SetCursorPosition(x, y);
@@ -17,5 +20,9 @@ public:
 		cout << "  (             |";
 		Console::SetCursorPosition(x, y + 2);
 		cout << "|= --OO--- - OO -=";
+	}
+	void generarMovimiento() {
+		dx = -(5 + rand() % 3);
+		validarMovimiento();
 	}
 };

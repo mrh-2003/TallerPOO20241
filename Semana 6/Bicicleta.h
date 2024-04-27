@@ -8,7 +8,17 @@ public:
 		w = 8;
 		h = 2;
 		dy = 0;
-		dx = 1 + rand() % 3; //[1- 3]
+		tipo = 0;
+		if (rand() % 2) { //0 1
+			dx = 1 + rand() % 3; //[1- 3]
+			x = 0;
+		}
+		else {
+			dx = -(1 + rand() % 3); //[-1 - -3]
+			x = wWindows - w;
+		}
+
+		y = rand() % (hWindows - h);
 	}
 	void dibujar() {
 		if (dx > 0) {
@@ -23,5 +33,8 @@ public:
 			Console::SetCursorPosition(x, y + 1);
 			cout << "(o)(o)";
 		}
+	}
+	void validarMovimiento() {
+		mover(-dx, -dy);
 	}
 };
